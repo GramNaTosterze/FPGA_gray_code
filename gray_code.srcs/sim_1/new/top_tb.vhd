@@ -58,11 +58,10 @@ begin
 
     gray_sim: process
     begin
+        wait for 100ns;
         clk_i <= '1';
       	wait for 10ns;
       	clk_i <= '0';
-      	  
-        wait for 100ns;
     end process;
 
     reset_sim: process

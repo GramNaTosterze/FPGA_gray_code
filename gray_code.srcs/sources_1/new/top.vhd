@@ -46,18 +46,21 @@ architecture Behavioral of top is
 begin
 
 
-    process(clk_i, rst_i)
+    process(clk_i, rst_i, x)
+        variable y: STD_LOGIC_VECTOR(2 downto 0);
     begin
         if rst_i = '1' then 
             x <= "000";
             led_o  <= "000";
-        end if; 
-        
+    
         if rising_edge(clk_i) then
             x <= x+1;
-            led_o(2) <= x(2);
-            led_o(1) <= x(2) xor x(1);
-            led_o(0) <= x(1) xor x(0);
+            y := x+1;
+            led_o(2) <= y(2);
+            led_o(1) <= y(2) xor y(1);
+            led_o(0) <= y(1) xor y(0);
         end if;
+        
+        end if; 
     end process;
 end Behavioral;
