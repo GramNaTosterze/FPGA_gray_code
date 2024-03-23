@@ -52,15 +52,12 @@ begin
         if rst_i = '1' then 
             x <= "000";
             led_o  <= "000";
-    
-        if rising_edge(clk_i) then
+        elsif rising_edge(clk_i) then
             x <= x+1;
             y := x+1;
             led_o(2) <= y(2);
             led_o(1) <= y(2) xor y(1);
             led_o(0) <= y(1) xor y(0);
-        end if;
-        
         end if; 
     end process;
 end Behavioral;
